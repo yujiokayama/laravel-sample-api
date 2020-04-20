@@ -17,7 +17,8 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
