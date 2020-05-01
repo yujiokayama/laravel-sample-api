@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Articles
+ */
+
+/*
 Route::group(['middleware' => ['api']], function () {
     Route::resource('articles', 'Api\ArticlesController', ['except' => ['create', 'edit']]);
+});
+*/
+
+/**
+ * Members
+ */
+Route::group(['middleware' => ['api']], function () {
+    Route::resource('members', 'Api\MembersController', ['except' => ['create', 'edit']]);
 });

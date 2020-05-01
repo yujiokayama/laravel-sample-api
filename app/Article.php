@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     /**
-     * タイトルでフィルタリング
+     * タイトルでフィルタ
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string|null $title
      * @return \Illuminate\Database\Eloquent\Builder

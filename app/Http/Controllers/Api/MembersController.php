@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Article;
+use App\Member;
 use App\Http\Controllers\Controller;
 
-class ArticlesController extends Controller
+class MembersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,8 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        // $articles = Article::all();
-        // return $articles;
-        $articles = Article::TitleFilter(request('title'))->get();
-        return $articles;
+        $members = Member::all();
+        return $members;
     }
 
     /**
@@ -29,12 +27,11 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        $article = new Article;
-        $article->title = $request->title;
-        $article->body = $request->body;
-        $article->tag = $request->tag;
-        $article->save();
-        return redirect('api/articles');
+        $member = new Member();
+        $member->name = $request->name;
+        $member->age = $request->age;
+        $member->save();
+        return redirect('api/members');
     }
 
     /**
@@ -45,8 +42,8 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        $article = Article::find($id);
-        return $article;
+        $member = Member::find($id);
+        return $member;
     }
 
     /**
@@ -58,12 +55,11 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article = Article::find($id);
-        $article->title = $request->title;
-        $article->body = $request->body;
-        $article->tag = $request->tag;
-        $article->save();
-        return redirect("api/articles/" . $id);
+        $member = Member::find($id);
+        $member->name = $request->name;
+        $member->age = $request->age;
+        $member->save();
+        return redirect("api/members/" . $id);
     }
 
     /**
@@ -74,8 +70,8 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        $article = Article::find($id);
-        $article->delete();
-        return redirect('api/articles');
+        $member = Member::find($id);
+        $member->delete();
+        return redirect('api/members');
     }
 }
